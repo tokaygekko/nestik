@@ -27,6 +27,4 @@ import { DatabaseModule } from './database/database.module'
   controllers: [AppController, CatsController],
   providers: [AppService],
 })
-export class AppModule {
-  constructor(private connection: Connection) {}
-}
+export class AppModule {}

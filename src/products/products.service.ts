@@ -23,15 +23,15 @@ export class ProductsService {
     return this.products.find((p) => p.id === id)
   }
 
-  create(productDto: CreateProductDto) {
-    this.products.push({
-      ...productDto,
-      id: new Date().getMilliseconds(),
-    })
-    return this.products
-  }
+  // create(productDto: CreateProductDto) {
+  //   this.products.push({
+  //     ...productDto,
+  //     id: new Date().getMilliseconds(),
+  //   })
+  //   return this.products
+  // }
 
-  async createProduct(productDto: CreateProductDto): Promise<Product> {
+  async create(productDto: CreateProductDto): Promise<Product> {
     const newProduct = await this.productsRepository.create(productDto)
     await this.productsRepository.save(newProduct)
     return newProduct

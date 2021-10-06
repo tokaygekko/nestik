@@ -27,7 +27,7 @@ export class ProductsController {
 
   @Post()
   create(@Body() createProductDto: CreateProductDto): Promise<Product> {
-    return this.productsService.createProduct(createProductDto)
+    return this.productsService.create(createProductDto)
   }
 
   @Delete(':id')
