@@ -1,10 +1,12 @@
 import { Module } from '@nestjs/common'
+import { ConfigModule } from '@nestjs/config'
+import { Connection } from 'typeorm'
+import * as Joi from '@hapi/joi'
+
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
 import { ProductsModule } from './products/products.module'
 import { CatsController } from './cats/cats.controller'
-import { ConfigModule } from '@nestjs/config'
-import * as Joi from '@hapi/joi'
 import { DatabaseModule } from './database/database.module'
 
 @Module({
@@ -25,4 +27,6 @@ import { DatabaseModule } from './database/database.module'
   controllers: [AppController, CatsController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(private connection: Connection) {}
+}

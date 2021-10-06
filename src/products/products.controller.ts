@@ -2,6 +2,7 @@ import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common'
 import { Products, ProductsService } from './products.service'
 import { CreateProductDto } from './dto/create-product.dto'
 import { UpdateProductDto } from './dto/update-product.dto'
+import Product from './product.entity'
 
 @Controller('products')
 export class ProductsController {
@@ -13,15 +14,20 @@ export class ProductsController {
   }
 
   @Get(':id')
-  getOne(@Param('id') id: string): CreateProductDto {
+  getOne(@Param('id') id: number): CreateProductDto {
     return this.productsService.getOne(id)
   }
 
-  @Post()
+  // @Post()
   // @HttpCode(HttpStatus.CREATED)
   // @Header('cache-control', 'none')
-  create(@Body() createProductDto: CreateProductDto): Products {
-    return this.productsService.create(createProductDto)
+  // create(@Body() createProductDto: CreateProductDto): Products {
+  //   return this.productsService.create(createProductDto)
+  // }
+
+  @Post()
+  create(@Body() createProductDto: CreateProductDto): Promise<Product> {
+    return this.productsService.createProduct(createProductDto)
   }
 
   @Delete(':id')
