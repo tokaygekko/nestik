@@ -41,7 +41,6 @@ export class ProductsController {
     @Body() updateProductDto: UpdateProductDto,
     @Param('id') id: number,
   ): Promise<Product> {
-    console.log(updateProductDto, id)
     return this.productsService.update(updateProductDto, id)
   }
 }
