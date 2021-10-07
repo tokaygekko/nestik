@@ -18,13 +18,6 @@ export class ProductsController {
     return this.productsService.getOne(id)
   }
 
-  // @Post()
-  // @HttpCode(HttpStatus.CREATED)
-  // @Header('cache-control', 'none')
-  // create(@Body() createProductDto: CreateProductDto): Products {
-  //   return this.productsService.create(createProductDto)
-  // }
-
   @Post()
   create(@Body() createProductDto: CreateProductDto): Promise<Product> {
     return this.productsService.create(createProductDto)
