@@ -19,7 +19,7 @@ export class ProductsService {
   }
 
   async getOne(id: number): Promise<Product> {
-    return await this.productsRepository.findOne(id)
+    return this.productsRepository.findOne(id)
   }
 
   async create(productDto: CreateProductDto): Promise<Product> {
